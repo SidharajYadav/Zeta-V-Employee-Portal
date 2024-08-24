@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Navbar from './components/Navbar';
+import UserManagement from './components/UserManagement';
+import RoleManagement from './components/RoleManagement';
+import Notification from './components/Notification';
 
-function App() {
+const App = () => {
+  const [activeComponent, setActiveComponent] = useState('role');
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex">
+      <Navbar setActiveComponent={setActiveComponent} />
+      <div className="w-3/4 h-screen overflow-y-auto">
+        
+        {activeComponent === 'role' && <RoleManagement />}
+        {activeComponent === 'user' && <UserManagement />}
+        {activeComponent === 'notification' && <Notification />}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
+
