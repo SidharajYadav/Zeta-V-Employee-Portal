@@ -40,18 +40,20 @@ const UserManagement = () => {
   };
 
   return (
-    <div className="p-4 md:p-8">
-      <h2 className="text-xl md:text-2xl font-bold mb-4">User Management</h2>
-      <button
-        onClick={() => setShowForm(true)}
-        className="bg-blue-500 text-white px-4 py-2 rounded mb-4"
-      >
-        {editingIndex !== null ? 'Edit User' : 'Add User'}
-      </button>
+    <div>
+      <div className="bg-gray-100 text-white p-4 flex justify-between items-center">
+        <h2 className="text-xl md:text-2xl font-bold text-black">User Management</h2>
+        <button
+          onClick={() => setShowForm(true)}
+          className="bg-[#50a49a] text-white px-4 py-2 rounded"
+        >
+          {editingIndex !== null ? 'Edit User' : 'Add User'}
+        </button>
+      </div>
 
       {showForm && (
         <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
-          <div className="bg-white p-4 rounded shadow-lg w-full md:w-80">
+          <div className="bg-white p-10 rounded shadow-lg w-full md:w-80">
             <h3 className="text-lg font-bold mb-2">
               {editingIndex !== null ? 'Edit User' : 'Add New User'}
             </h3>
@@ -97,34 +99,40 @@ const UserManagement = () => {
         </div>
       )}
 
-      <ul>
-        {users.map((user, index) => (
-          <li
-            key={index}
-            className="border p-4 mb-2 flex flex-col md:flex-row justify-between items-start md:items-center"
-          >
-            <div className="flex-1">
-              <p className="font-bold">{user.name}</p>
-              <p className="text-sm">{user.jobTitle}</p>
-              <p className="text-sm">{user.email}</p>
-            </div>
-            <div className="flex mt-2 md:mt-0">
-              <button
-                onClick={() => editUser(index)}
-                className="bg-yellow-500 text-white px-4 py-2 rounded mr-2"
-              >
-                Edit
-              </button>
-              <button
-                onClick={() => deleteUser(index)}
-                className="bg-red-500 text-white px-4 py-2 rounded"
-              >
-                Delete
-              </button>
-            </div>
-          </li>
-        ))}
-      </ul>
+      <div className="p-4 md:p-8">
+        <div className="flex justify-between border-b border-gray-400 pb-2 mb-4">
+          <h3 className="font-bold w-1/2">User Name</h3>
+          <h3 className="font-bold w-1/2 text-center">Actions</h3>
+        </div>
+        <ul className="list-none p-0">
+          {users.map((user, index) => (
+            <li
+              key={index}
+              className="flex flex-col md:flex-row justify-between items-start md:items-center mb-2 border-b border-gray-400 py-2"
+            >
+              <div className="flex-1">
+                <p className="font-bold">{user.name}</p>
+                <p className="text-sm">{user.jobTitle}</p>
+                <p className="text-sm">{user.email}</p>
+              </div>
+              <div className="flex mt-2 md:mt-0">
+                <button
+                  onClick={() => editUser(index)}
+                  className="bg-yellow-500 text-white px-4 py-2 rounded mr-2"
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => deleteUser(index)}
+                  className="bg-red-500 text-white px-4 py-2 rounded"
+                >
+                  Delete
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

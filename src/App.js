@@ -9,7 +9,7 @@ const App = () => {
 
   return (
     <div className="flex">
-      <Navbar setActiveComponent={setActiveComponent} />
+      <Navbar setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
       <div className="w-3/4 h-screen overflow-y-auto">
         
         {activeComponent === 'role' && <RoleManagement />}

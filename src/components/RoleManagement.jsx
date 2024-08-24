@@ -352,15 +352,16 @@
 //   };
 
 
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { FaSearch, FaBell, FaUser } from 'react-icons/fa';
+import { TfiMenu } from "react-icons/tfi";
 
 const Navbar = () => {
   return (
     <div className="bg-gray-100 text-white p-4 flex justify-between items-center">
       <div className="flex items-center space-x-4">
         <button className="text-black hover:text-gray-400">
-          
+        <TfiMenu />
         </button>
       </div>
       <div className="flex items-center space-x-4">
@@ -389,6 +390,17 @@ const RoleManagement = () => {
       write: false,
     });
     const [editingIndex, setEditingIndex] = useState(null);
+  
+    useEffect(() => {
+      // Load roles from localStorage on component mount
+      const savedRoles = JSON.parse(localStorage.getItem('roles')) || [];
+      setRoles(savedRoles);
+    }, []);
+  
+    useEffect(() => {
+      // Save roles to localStorage whenever roles change
+      localStorage.setItem('roles', JSON.stringify(roles));
+    }, [roles]);
   
     const resetForm = () => {
       setNewRole('');
@@ -435,7 +447,7 @@ const RoleManagement = () => {
             <h2 className="text-xl md:text-2xl font-bold">Role Management</h2>
             <button
               onClick={() => setShowForm(true)}
-              className="bg-blue-500 text-white px-4 py-2 rounded"
+              className="bg-[#50a49a] text-white px-4 py-2 rounded-lg"
             >
               {editingIndex !== null ? 'Edit Role' : 'Add Role'}
             </button>
@@ -482,13 +494,13 @@ const RoleManagement = () => {
                 <div className="flex justify-end">
                   <button
                     onClick={addOrUpdateRole}
-                    className="bg-green-500 text-white px-4 py-2 rounded mr-2"
+                    className="bg-green-500 text-white px-4 py-2 rounded-lg mr-2"
                   >
                     {editingIndex !== null ? 'Update' : 'Save'}
                   </button>
                   <button
                     onClick={resetForm}
-                    className="bg-red-500 text-white px-4 py-2 rounded"
+                    className="bg-red-500 text-white px-4 py-2 rounded-lg"
                   >
                     Cancel
                   </button>
@@ -497,30 +509,30 @@ const RoleManagement = () => {
             </div>
           )}
   
-          <div className="mb-4 ">
-            <div className="flex justify-between border-b  border-gray-400">
-              <h3 className="font-bold">Roles</h3>
-              <h3 className="font-bold mr-96">Function(s)</h3>
+          <div className="mb-4">
+            <div className="flex justify-between border-b border-gray-400 pb-2">
+              <h3 className="font-bold w-1/2">Roles</h3>
+              <h3 className="font-bold w-1/2 text-center">Function(s)</h3>
             </div>
-            <ul className="list-none p-0 ">
+            <ul className="list-none p-0">
               {roles.map((role, index) => (
                 <li
                   key={index}
-                  className="flex flex-col md:flex-row justify-between items-start md:items-center mb-2 border-b  border-gray-400"
+                  className="flex flex-col md:flex-row justify-between items-start md:items-center mt-3 mb-3 border-b border-gray-400 py-2"
                 >
-                  <div className="flex-1  py-2">
+                  <div className="flex-1">
                     <p className="font-bold">{role.name}</p>
                   </div>
-                  <div className="flex flex-col md:flex-row mt-2 md:mt-0 p-4 ">
+                  <div className="flex flex-col md:flex-row m-3 md:mt-0 w-full md:w-auto justify-start">
                     <button
                       onClick={() => editRole(index)}
-                      className="bg-yellow-500 text-white px-4 py-2 rounded mr-2 mb-2 md:mb-0"
+                      className="bg-[#50a49a] text-white px-4 py-2 rounded-lg mr-2 mb-2 md:mb-0 w-full md:w-auto"
                     >
                       Edit
                     </button>
                     <button
                       onClick={() => deleteRole(index)}
-                      className="bg-red-500 text-white px-4 py-2 rounded"
+                      className="bg-[#ff4694] text-white px-4 py-2 rounded-lg w-full md:w-auto"
                     >
                       Delete
                     </button>
