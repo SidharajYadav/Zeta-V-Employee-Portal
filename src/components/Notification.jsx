@@ -202,20 +202,21 @@ const Notification = () => {
             >
               Create New Message
             </button>
-            <button
+           
+          </div>
+        </div>
+        <button
               onClick={handleResetFilters}
-              className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-lg text-white bg-[#50a49a]"
+              className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-lg text-white bg-[#50a49a] mt-2"
             >
               Search
             </button>
             <button
               onClick={handleResetFilters}
-              className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-lg text-white bg-[#50a49a]"
+              className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-lg text-white bg-[#50a49a] mt-2 ml-2"
             >
               Reset
             </button>
-          </div>
-        </div>
       </div>
 
       {/* Message Table */}
