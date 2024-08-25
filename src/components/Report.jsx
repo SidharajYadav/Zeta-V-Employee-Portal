@@ -6,7 +6,7 @@ const Report = () => {
   const [reports, setReports] = useState([
     {
       id: 1,
-      name: 'Annual Report 2023.pdf',
+      name: 'Annual Report .pdf',
       url: '/path-to-your-demo-files/annual-report-2023.pdf',
       type: 'application/pdf',
     },

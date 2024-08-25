@@ -173,13 +173,13 @@ const RoleManagement = () => {
                 <div className="flex w-full md:w-3/5 justify-center mt-2 md:mt-0">
                   <button
                     onClick={() => editRole(index)}
-                    className="bg-[#50a49a] text-white px-4 py-2 rounded-lg mr-2 w-full md:w-24"
+                    className="bg-[#50a49a] text-white px-3 py-1 rounded-lg mr-2 w-full md:w-24"
                   >
                     Edit
                   </button>
                   <button
                     onClick={() => deleteRole(index)}
-                    className="bg-[#ff4694] text-white px-4 py-2 rounded-lg w-full md:w-24"
+                    className="bg-[#ff4694] text-white px-3 py-1 rounded-lg w-full md:w-24"
                   >
                     Delete
                   </button>

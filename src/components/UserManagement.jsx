@@ -125,13 +125,13 @@ const UserManagement = () => {
             <div className="flex justify-between">
               <button
                 onClick={() => editUser(index)}
-                className="bg-[#50a49a] text-white px-4 py-2 rounded hover:bg-[#3e8a74]"
+                className="bg-[#50a49a] text-white px-4 py-1 rounded hover:bg-[#3e8a74]"
               >
                 Edit
               </button>
               <button
                 onClick={() => deleteUser(index)}
-                className="bg-[#ff4694] text-white px-4 py-2 rounded hover:bg-[#e03b6c]"
+                className="bg-[#ff4694] text-white px-4 py-1 rounded hover:bg-[#e03b6c]"
               >
                 Delete
               </button>

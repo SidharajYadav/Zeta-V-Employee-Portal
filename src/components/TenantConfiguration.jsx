@@ -49,7 +49,7 @@ const TenantConfiguration = () => {
         <h2 className="text-2xl font-bold">Tenant Configuration</h2>
         <button
           onClick={() => setShowForm(true)}
-          className="bg-[#50a49a] text-white px-4 py-2 rounded hover:bg-[#3e8a74]"
+          className="bg-[#50a49a] text-white px-4 py-1 rounded hover:bg-[#3e8a74]"
         >
           {editingIndex !== null ? "Edit Tenant" : "Add Tenant"}
         </button>
@@ -89,13 +89,13 @@ const TenantConfiguration = () => {
             <div className="flex justify-end">
               <button
                 onClick={addOrUpdateTenant}
-                className="bg-[#50a49a] text-white px-4 py-2 rounded hover:bg-[#3e8a74] mr-2"
+                className="bg-[#50a49a] text-white px-4 py-1 rounded hover:bg-[#3e8a74] mr-2"
               >
                 {editingIndex !== null ? "Update" : "Save"}
               </button>
               <button
                 onClick={resetForm}
-                className="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500"
+                className="bg-gray-400 text-white px-4 py-1 rounded hover:bg-gray-500"
               >
                 Cancel
               </button>
@@ -117,13 +117,13 @@ const TenantConfiguration = () => {
             <div className="flex justify-between">
               <button
                 onClick={() => editTenant(index)}
-                className="bg-[#50a49a] text-white px-4 py-2 rounded hover:bg-[#3e8a74]"
+                className="bg-[#50a49a] text-white px-4 py-1 rounded hover:bg-[#3e8a74]"
               >
                 Edit
               </button>
               <button
                 onClick={() => deleteTenant(index)}
-                className="bg-[#ff4694] text-white px-4 py-2 rounded hover:bg-[#e03b6c]"
+                className="bg-[#ff4694] text-white px-4 py-1 rounded hover:bg-[#e03b6c]"
               >
                 Delete
               </button>

@@ -202,21 +202,20 @@ const Notification = () => {
             >
               Create New Message
             </button>
-           
           </div>
         </div>
         <button
-              onClick={handleResetFilters}
-              className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-lg text-white bg-[#50a49a] mt-2"
-            >
-              Search
-            </button>
-            <button
-              onClick={handleResetFilters}
-              className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-lg text-white bg-[#50a49a] mt-2 ml-2"
-            >
-              Reset
-            </button>
+          onClick={handleResetFilters}
+          className="inline-flex items-center px-4 py-1 border border-gray-300 text-sm font-medium rounded-lg text-white bg-[#50a49a] mt-2"
+        >
+          Search
+        </button>
+        <button
+          onClick={handleResetFilters}
+          className="inline-flex items-center px-4 py-1 border border-gray-300 text-sm font-medium rounded-lg text-white bg-[#50a49a] mt-2 ml-2"
+        >
+          Reset
+        </button>
       </div>
 
       {/* Message Table */}
@@ -276,10 +275,11 @@ const Notification = () => {
                   <div className="flex items-center ">
                     <button
                       onClick={() => handleOpenModal("edit", msg)}
-                      className="inline-flex items-center px-2 py-1 border border-transparent text-xs font-medium rounded-md text-white bg-[#50a49a] mr-4"
+                      className="inline-flex items-center px-3 py-1 border border-transparent text-xs font-medium rounded-md text-white bg-[#50a49a] mr-4 min-w-[160px] whitespace-nowrap overflow-hidden text-ellipsis"
                     >
                       Copy & Create message
                     </button>
+
                     <button
                       onClick={() => handleDeleteMessage(msg.id)}
                       className="inline-flex items-center px-2 py-1 border border-transparent text-xs font-medium rounded-md text-white bg-[#50a49a] "
