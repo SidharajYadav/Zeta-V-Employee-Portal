@@ -19,7 +19,7 @@ const Navbar = () => {
           <FaBell size={20} />
         </button>
         <div className="flex items-center space-x-2">
-          <span className="hidden md:inline text-black">Hi, John</span>
+          <span className="hidden md:inline text-black">Hi, User</span>
           <FaUser className="text-black" size={20} />
         </div>
       </div>

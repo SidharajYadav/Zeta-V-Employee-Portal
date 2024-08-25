@@ -244,7 +244,7 @@ const Notification = () => {
               <th className="px-2 py-3 text-left text-sm font-bold text-gray-900 tracking-wider">
                 Last Update/Approve
               </th>
-              <th className="px-2 py-3 text-left text-sm font-bold text-gray-900 tracking-wider">
+              <th className="px-2 py-3 text-left text-sm font-bold text-gray-900 tracking-wider ml-1.5">
                 Function(s)
               </th>
             </tr>
@@ -272,16 +272,16 @@ const Notification = () => {
                   {format(new Date(msg.lastUpdate), "yyyy-MM-dd")}
                 </td>
                 <td className="px-4 py-2 text-sm text-gray-500">
-                  <div className="flex items-center justify-center space-x-2">
+                  <div className="flex items-center ">
                     <button
                       onClick={() => handleOpenModal("edit", msg)}
-                      className="inline-flex items-center px-2 py-1 border border-transparent text-xs font-medium rounded-md text-white bg-[#50a49a] "
+                      className="inline-flex items-center px-2 py-1 border border-transparent text-xs font-medium rounded-md text-white bg-[#50a49a] mr-4"
                     >
-                      Copy & Create
+                      Copy & Create message
                     </button>
                     <button
                       onClick={() => handleDeleteMessage(msg.id)}
-                      className="inline-flex items-center px-2 py-1 border border-transparent text-xs font-medium rounded-md text-white bg-[#50a49a]"
+                      className="inline-flex items-center px-2 py-1 border border-transparent text-xs font-medium rounded-md text-white bg-[#50a49a] "
                     >
                       Details
                     </button>

@@ -1,102 +1,94 @@
 import React, { useState } from "react";
 
-const UserManagement = () => {
-  const [users, setUsers] = useState([
-    {
-      name: "ABC",
-      jobTitle: "Software Engineer",
-      email: "john.doe@example.com",
-    },
-    {
-      name: "XYZ",
-      jobTitle: "Project Manager",
-      email: "jane.smith@example.com",
-    },
+const MemberManagement = () => {
+  const [members, setMembers] = useState([
+    { name: "Team 1", role: "Admin", email: "alice.johnson@example.com" },
+    { name: "Team 2", role: "Member", email: "bob.brown@example.com" },
   ]);
   const [showForm, setShowForm] = useState(false);
-  const [newUser, setNewUser] = useState({ name: "", jobTitle: "", email: "" });
+  const [newMember, setNewMember] = useState({ name: "", role: "", email: "" });
   const [editingIndex, setEditingIndex] = useState(null);
 
   const resetForm = () => {
-    setNewUser({ name: "", jobTitle: "", email: "" });
+    setNewMember({ name: "", role: "", email: "" });
     setShowForm(false);
     setEditingIndex(null);
   };
 
-  const addOrUpdateUser = () => {
+  const addOrUpdateMember = () => {
     if (editingIndex !== null) {
-      const updatedUsers = [...users];
-      updatedUsers[editingIndex] = newUser;
-      setUsers(updatedUsers);
+      const updatedMembers = [...members];
+      updatedMembers[editingIndex] = newMember;
+      setMembers(updatedMembers);
     } else {
-      setUsers([...users, newUser]);
+      setMembers([...members, newMember]);
     }
     resetForm();
   };
 
-  const editUser = (index) => {
+  const editMember = (index) => {
     setEditingIndex(index);
-    setNewUser(users[index]);
+    setNewMember(members[index]);
     setShowForm(true);
   };
 
-  const deleteUser = (index) => {
-    const updatedUsers = users.filter((_, i) => i !== index);
-    setUsers(updatedUsers);
+  const deleteMember = (index) => {
+    const updatedMembers = members.filter((_, i) => i !== index);
+    setMembers(updatedMembers);
   };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setNewUser((prev) => ({ ...prev, [name]: value }));
+    setNewMember((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
     <div className="p-6 bg-gray-100 min-h-screen font-sans">
       {/* Header */}
       <div className="bg-white p-4 rounded shadow mb-6 flex justify-between items-center">
-        <h2 className="text-2xl font-bold">User Management</h2>
+        <h2 className="text-2xl font-bold">Member Management</h2>
         <button
           onClick={() => setShowForm(true)}
           className="bg-[#50a49a] text-white px-4 py-2 rounded hover:bg-[#3e8a74]"
         >
-          {editingIndex !== null ? "Edit User" : "Add User"}
+          {editingIndex !== null ? "Edit Member" : "Add Member"}
         </button>
       </div>
 
-      {/* User Form Modal */}
+      {/* Member Form Modal */}
       {showForm && (
         <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
           <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
             <h3 className="text-xl font-bold mb-4">
-              {editingIndex !== null ? "Edit User" : "Add New User"}
+              {editingIndex !== null ? "Edit Member" : "Add New Member"}
             </h3>
             <input
               type="text"
               name="name"
-              value={newUser.name}
+              value={newMember.name}
               onChange={handleInputChange}
-              placeholder="User Name"
+              placeholder="Member Name"
               className="border border-gray-300 p-2 mb-2 w-full rounded"
             />
             <input
               type="text"
-              name="jobTitle"
-              value={newUser.jobTitle}
+              name="role"
+              value={newMember.role}
               onChange={handleInputChange}
-              placeholder="Job Title"
+              placeholder="Role"
               className="border border-gray-300 p-2 mb-2 w-full rounded"
             />
             <input
               type="email"
               name="email"
-              value={newUser.email}
+              value={newMember.email}
               onChange={handleInputChange}
               placeholder="Email"
               className="border border-gray-300 p-2 mb-4 w-full rounded"
             />
             <div className="flex justify-end">
               <button
-                onClick={addOrUpdateUser}
+                onClick={addOrUpdateMember}
                 className="bg-[#50a49a] text-white px-4 py-2 rounded hover:bg-[#3e8a74] mr-2"
               >
                 {editingIndex !== null ? "Update" : "Save"}
@@ -112,25 +104,25 @@ const UserManagement = () => {
         </div>
       )}
 
-      {/* User List */}
+      {/* Member List */}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {users.map((user, index) => (
+        {members.map((member, index) => (
           <div
             key={index}
             className="bg-white p-6 rounded-lg shadow-lg border border-gray-200"
           >
-            <h4 className="text-xl font-semibold mb-2">{user.name}</h4>
-            <p className="text-gray-700 mb-2">{user.jobTitle}</p>
-            <p className="text-gray-600 mb-4">{user.email}</p>
+            <h4 className="text-xl font-semibold mb-2">{member.name}</h4>
+            <p className="text-gray-700 mb-2">Role: {member.role}</p>
+            <p className="text-gray-600 mb-4">Email: {member.email}</p>
             <div className="flex justify-between">
               <button
-                onClick={() => editUser(index)}
+                onClick={() => editMember(index)}
                 className="bg-[#50a49a] text-white px-4 py-2 rounded hover:bg-[#3e8a74]"
               >
                 Edit
               </button>
               <button
-                onClick={() => deleteUser(index)}
+                onClick={() => deleteMember(index)}
                 className="bg-[#ff4694] text-white px-4 py-2 rounded hover:bg-[#e03b6c]"
               >
                 Delete
@@ -143,4 +135,4 @@ const UserManagement = () => {
   );
 };
 
-export default UserManagement;
+export default MemberManagement;

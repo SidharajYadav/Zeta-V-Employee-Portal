@@ -1,33 +1,12 @@
-// import React, { useState } from 'react';
-// import Navbar from './components/Navbar';
-// import UserManagement from './components/UserManagement';
-// import RoleManagement from './components/RoleManagement';
-// import Notification from './components/Notification';
-
-// const App = () => {
-//   const [activeComponent, setActiveComponent] = useState('role');
-
-//   return (
-//     <div className="flex font-sans">
-//       <Navbar setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
-//       <div className="w-3/4 h-screen overflow-y-auto">
-        
-//         {activeComponent === 'role' && <RoleManagement />}
-//         {activeComponent === 'user' && <UserManagement />}
-//         {activeComponent === 'notification' && <Notification />}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default App;
-
 import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import UserManagement from './components/UserManagement';
 import RoleManagement from './components/RoleManagement';
 import Notification from './components/Notification';
-
+import Report from './components/Report'; 
+import CampaignManagement from './components/CampaignManagement';
+import TenantConfiguration from './components/TenantConfiguration';
+import MemberManagement from './components/MemberManagement';
 const App = () => {
   const [activeComponent, setActiveComponent] = useState('role');
 
@@ -38,6 +17,12 @@ const App = () => {
         {activeComponent === 'role' && <RoleManagement />}
         {activeComponent === 'user' && <UserManagement />}
         {activeComponent === 'notification' && <Notification />}
+        {activeComponent === 'campaign' && <CampaignManagement />}
+        {activeComponent === 'tenant' && <TenantConfiguration />}
+        {activeComponent === 'push' && <MemberManagement />}
+        {activeComponent === 'reports' && <Report />}
+        
+        
       </main>
     </div>
   );
