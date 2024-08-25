@@ -1,14 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import {
-  FaSearch,
-  FaPlus,
-  FaEdit,
-  FaTrash,
-  FaCopy,
-  FaTimes,
-} from 'react-icons/fa';
-import { format } from 'date-fns';
-import Modal from './Modal'; // We'll create this component next
+import React, { useState, useEffect } from "react";
+import { format } from "date-fns";
+import Modal from "./Modal"; // We'll create this component next
+import { FaSearch } from "react-icons/fa";
 
 const Notification = () => {
   // Sample data
@@ -17,20 +10,20 @@ const Notification = () => {
       id: 1,
       createDate: new Date(),
       title: "Let's join DIY Bracelet now!",
-      status: 'Draft',
+      status: "Draft",
       pushDate: new Date(),
-      editBy: 'Amy Lee',
-      approvedBy: 'Ling',
+      editBy: "Amy Lee",
+      approvedBy: "Ling",
       lastUpdate: new Date(),
     },
     {
       id: 2,
       createDate: new Date(),
-      title: 'New Features Released!',
-      status: 'Delivered',
+      title: "New Features Released!",
+      status: "Delivered",
       pushDate: new Date(),
-      editBy: 'John Doe',
-      approvedBy: 'Mike',
+      editBy: "John Doe",
+      approvedBy: "Mike",
       lastUpdate: new Date(),
     },
     // Add more messages as needed
@@ -39,14 +32,12 @@ const Notification = () => {
   // State Management
   const [messages, setMessages] = useState(initialMessages);
   const [filteredMessages, setFilteredMessages] = useState(initialMessages);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [statusFilter, setStatusFilter] = useState('');
-  const [dateFilter, setDateFilter] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
+  const [statusFilter, setStatusFilter] = useState("");
+  const [dateFilter, setDateFilter] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalMode, setModalMode] = useState('create'); // 'create' | 'edit' | 'copy'
+  const [modalMode, setModalMode] = useState("create"); // 'create' | 'edit' | 'copy'
   const [selectedMessage, setSelectedMessage] = useState(null);
-  const [toFilter, setToFilter] = useState('');
-  const [approvedByFilter, setApprovedByFilter] = useState('');
 
   // Effect to filter messages based on search and filters
   useEffect(() => {
@@ -65,8 +56,8 @@ const Notification = () => {
     if (dateFilter) {
       filtered = filtered.filter(
         (msg) =>
-          format(msg.createDate, 'yyyy-MM-dd') ===
-          format(new Date(dateFilter), 'yyyy-MM-dd')
+          format(msg.createDate, "yyyy-MM-dd") ===
+          format(new Date(dateFilter), "yyyy-MM-dd")
       );
     }
 
@@ -87,9 +78,9 @@ const Notification = () => {
   };
 
   const handleResetFilters = () => {
-    setSearchTerm('');
-    setStatusFilter('');
-    setDateFilter('');
+    setSearchTerm("");
+    setStatusFilter("");
+    setDateFilter("");
   };
 
   const handleOpenModal = (mode, message = null) => {
@@ -121,7 +112,7 @@ const Notification = () => {
   };
 
   const handleDeleteMessage = (id) => {
-    if (window.confirm('Are you sure you want to delete this message?')) {
+    if (window.confirm("Are you sure you want to delete this message?")) {
       setMessages(messages.filter((msg) => msg.id !== id));
     }
   };
@@ -130,12 +121,11 @@ const Notification = () => {
     <div className="p-6 bg-gray-100 min-h-screen font-sans">
       {/* Header */}
       <div className="bg-white p-4 rounded shadow mb-6">
-        {/* <h1 className="text-2xl font-semibold mb-4">Notification Management</h1> */}
-        <div className="flex flex-col md:flex-row md:items-end md:space-x-4 space-y-4 md:space-y-0">
+        <div className="flex flex-col sm:flex-row sm:items-end sm:space-x-4 space-y-4 sm:space-y-0">
           {/* Search */}
           <div className="flex-1">
             <label className="block text-sm font-medium text-gray-700 mb-1">
-               Title
+              Title
             </label>
             <div className="relative">
               <input
@@ -146,7 +136,6 @@ const Notification = () => {
                 placeholder="Search..."
               />
               <FaSearch className="absolute left-3 top-2.5 text-gray-400" />
-             
             </div>
           </div>
           {/* Status Filter */}
@@ -180,7 +169,7 @@ const Notification = () => {
           </div>
           <div className="flex-1">
             <label className="block text-sm font-medium text-gray-700 mb-1">
-             to
+              To
             </label>
             <input
               type="date"
@@ -191,7 +180,7 @@ const Notification = () => {
           </div>
           <div className="flex-1">
             <label className="block text-sm font-medium text-gray-700 mb-1">
-             Approved By
+              Approved By
             </label>
             <select
               value={statusFilter}
@@ -199,171 +188,120 @@ const Notification = () => {
               className="block w-full pl-3 pr-10 py-2 border border-gray-300 bg-white rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             >
               <option value=""></option>
-              <option value="Draft">Draft</option>
-              <option value="Delivered">Delivered</option>
-              <option value="Cancelled">Cancelled</option>
-              <option value="Scheduled">Scheduled</option>
+              <option value="Amy Lee">Amy Lee</option>
+              <option value="John Doe">John Doe</option>
+              <option value="Ling">Ling</option>
+              <option value="Mike">Mike</option>
             </select>
           </div>
           {/* Buttons */}
-          <div className="flex space-x-2">
-           
+          <div className="flex space-x-2 mt-4 sm:mt-0">
             <button
-              onClick={() => handleOpenModal('create')}
+              onClick={() => handleOpenModal("create")}
               className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#50a49a]"
             >
-              {/* <FaPlus className="mr-2" /> */}
               Create New Message
             </button>
-          </div>
-        </div>
-        
-        <button
+            <button
               onClick={handleResetFilters}
-              className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-lg text-white bg-[#50a49a] mt-2 mr-2"
+              className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-lg text-white bg-[#50a49a]"
             >
-              Search 
+              Search
             </button>
-              <button
+            <button
               onClick={handleResetFilters}
-              className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-lg text-white bg-[#50a49a] mt-2 ml-2"
+              className="inline-flex items-center px-4 py-2 border border-gray-300 text-sm font-medium rounded-lg text-white bg-[#50a49a]"
             >
               Reset
             </button>
+          </div>
+        </div>
       </div>
 
       {/* Message Table */}
-      <div className="bg-white p-4 rounded shadow">
+      <div className="bg-white p-4 rounded shadow overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
-              <th
-                scope="col"
-                className="px-4 py-3 text-left text-md font-bold text-gray-900  tracking-wider"
-              >
+              <th className="px-2 py-3 text-left text-sm font-bold text-gray-900 tracking-wider">
                 Create Date
               </th>
-              <th
-                scope="col"
-                className="px-4 py-3 text-left text-md font-bold text-gray-900 tracking-wider"
-              >
+              <th className="px-2 py-3 text-left text-sm font-bold text-gray-900 tracking-wider">
                 Title
               </th>
-              <th
-                scope="col"
-                className="px-4 py-3 text-left text-md font-bold text-gray-900  tracking-wider"
-              >
+              <th className="px-2 py-3 text-left text-sm font-bold text-gray-900 tracking-wider">
                 Status
               </th>
-              <th
-                scope="col"
-                className="px-4 py-3 text-left text-md font-bold text-gray-900  tracking-wider"
-              >
+              <th className="px-2 py-3 text-left text-sm font-bold text-gray-900 tracking-wider">
                 Push Date
               </th>
-              <th
-                scope="col"
-                className="px-4 py-3 text-left text-md font-bold text-gray-900  tracking-wider"
-              >
+              <th className="px-2 py-3 text-left text-sm font-bold text-gray-900 tracking-wider">
                 Edit By
               </th>
-              <th
-                scope="col"
-                className="px-4 py-3 text-left text-md font-bold text-gray-900  tracking-wider"
-              >
+              <th className="px-2 py-3 text-left text-sm font-bold text-gray-900 tracking-wider">
                 Approved By
               </th>
-              <th
-                scope="col"
-                className="px-4 py-3 text-left text-md font-bold text-gray-900  tracking-wider"
-              >
+              <th className="px-2 py-3 text-left text-sm font-bold text-gray-900 tracking-wider">
                 Last Update/Approve
               </th>
-              <th
-                scope="col"
-                className="px-4 py-3 text-center text-md font-bold text-gray-900  tracking-wider"
-              >
+              <th className="px-2 py-3 text-left text-sm font-bold text-gray-900 tracking-wider">
                 Function(s)
               </th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200 ">
-            {filteredMessages.length > 0 ? (
-              filteredMessages.map((msg) => (
-                <tr key={msg.id}>
-                  <td className="px-4 py-2 whitespace-nowrap text-md text-gray-900">
-                    {format(msg.createDate, 'dd/MM/yyyy HH:mm')}
-                  </td>
-                  <td className="px-4 py-2 whitespace-nowrap text-md text-gray-900">
-                    {msg.title}
-                  </td>
-                  <td className="px-4 py-2 whitespace-nowrap text-md">
-                    <span
-                      className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                        msg.status === 'Draft'
-                          ? 'bg-yellow-100 text-yellow-800'
-                          : msg.status === 'Delivered'
-                          ? 'bg-green-100 text-green-800'
-                          : msg.status === 'Cancelled'
-                          ? 'bg-red-100 text-red-800'
-                          : 'bg-blue-100 text-blue-800'
-                      }`}
+          <tbody className="bg-white divide-y divide-gray-200">
+            {filteredMessages.map((msg) => (
+              <tr key={msg.id}>
+                <td className="px-4 py-2 text-sm text-gray-500">
+                  {format(new Date(msg.createDate), "yyyy-MM-dd")}
+                </td>
+                <td className="px-4 py-2 text-sm text-gray-500">{msg.title}</td>
+                <td className="px-4 py-2 text-sm text-gray-500">
+                  {msg.status}
+                </td>
+                <td className="px-4 py-2 text-sm text-gray-500">
+                  {format(new Date(msg.pushDate), "yyyy-MM-dd")}
+                </td>
+                <td className="px-4 py-2 text-sm text-gray-500">
+                  {msg.editBy}
+                </td>
+                <td className="px-4 py-2 text-sm text-gray-500">
+                  {msg.approvedBy}
+                </td>
+                <td className="px-4 py-2 text-sm text-gray-500">
+                  {format(new Date(msg.lastUpdate), "yyyy-MM-dd")}
+                </td>
+                <td className="px-4 py-2 text-sm text-gray-500">
+                  <div className="flex items-center justify-center space-x-2">
+                    <button
+                      onClick={() => handleOpenModal("edit", msg)}
+                      className="inline-flex items-center px-2 py-1 border border-transparent text-xs font-medium rounded-md text-white bg-[#50a49a] "
                     >
-                      {msg.status}
-                    </span>
-                  </td>
-                  <td className="px-4 py-2 whitespace-nowrap text-md text-gray-900">
-                    {format(msg.pushDate, 'dd/MM/yyyy HH:mm')}
-                  </td>
-                  <td className="px-4 py-2 whitespace-nowrap text-md text-gray-900">
-                    {msg.editBy}
-                  </td>
-                  <td className="px-4 py-2 whitespace-nowrap text-md text-gray-900">
-                    {msg.approvedBy}
-                  </td>
-                  <td className="px-4 py-2 whitespace-nowrap text-md text-gray-900">
-                    {format(msg.lastUpdate, 'dd/MM/yyyy HH:mm')}
-                  </td>
-                  <td className="px-4 py-2 whitespace-nowrap text-md text-gray-900">
-                    <div className="flex items-center justify-center space-x-2">
-                      <button
-                        onClick={() => handleOpenModal('edit', msg)}
-                        className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#50a49a]"
-                      >
-                       Copy and create new message
-                      </button>
-                      <button
-                        onClick={() => handleDeleteMessage(msg.id)}
-                        className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#50a49a]"
-                      >
-                        Details
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))
-            ) : (
-              <tr>
-                <td
-                  colSpan="8"
-                  className="px-4 py-2 text-center text-sm text-gray-500"
-                >
-                  No messages found.
+                      Copy & Create
+                    </button>
+                    <button
+                      onClick={() => handleDeleteMessage(msg.id)}
+                      className="inline-flex items-center px-2 py-1 border border-transparent text-xs font-medium rounded-md text-white bg-[#50a49a]"
+                    >
+                      Details
+                    </button>
+                  </div>
                 </td>
               </tr>
-            )}
+            ))}
           </tbody>
         </table>
       </div>
 
-      {/* Create/Edit Message Modal */}
+      {/* Modal for Creating/Editing Messages */}
       {isModalOpen && (
         <Modal
           mode={modalMode}
           message={selectedMessage}
           onClose={handleCloseModal}
-          onAdd={handleAddMessage}
-          onUpdate={handleUpdateMessage}
+          onSave={
+            modalMode === "create" ? handleAddMessage : handleUpdateMessage
+          }
         />
       )}
     </div>

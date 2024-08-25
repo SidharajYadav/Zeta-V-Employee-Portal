@@ -1,13 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const UserManagement = () => {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([
+    {
+      name: "John Doe",
+      jobTitle: "Software Engineer",
+      email: "john.doe@example.com",
+    },
+    {
+      name: "Jane Smith",
+      jobTitle: "Project Manager",
+      email: "jane.smith@example.com",
+    },
+  ]);
   const [showForm, setShowForm] = useState(false);
-  const [newUser, setNewUser] = useState({ name: '', jobTitle: '', email: '' });
+  const [newUser, setNewUser] = useState({ name: "", jobTitle: "", email: "" });
   const [editingIndex, setEditingIndex] = useState(null);
 
   const resetForm = () => {
-    setNewUser({ name: '', jobTitle: '', email: '' });
+    setNewUser({ name: "", jobTitle: "", email: "" });
     setShowForm(false);
     setEditingIndex(null);
   };
@@ -40,22 +51,22 @@ const UserManagement = () => {
   };
 
   return (
-    <div>
-      <div className="bg-gray-100 text-white p-4 flex justify-between items-center">
-        <h2 className="text-xl md:text-2xl font-bold text-black">User Management</h2>
+    <div className="p-4">
+      <div className="bg-gray-100 text-black p-4 flex justify-between items-center mb-4">
+        <h2 className="text-xl md:text-2xl font-bold">User Management</h2>
         <button
           onClick={() => setShowForm(true)}
           className="bg-[#50a49a] text-white px-4 py-2 rounded"
         >
-          {editingIndex !== null ? 'Edit User' : 'Add User'}
+          {editingIndex !== null ? "Edit User" : "Add User"}
         </button>
       </div>
 
       {showForm && (
         <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
-          <div className="bg-white p-10 rounded shadow-lg w-full md:w-80">
-            <h3 className="text-lg font-bold mb-2">
-              {editingIndex !== null ? 'Edit User' : 'Add New User'}
+          <div className="bg-white p-10 rounded shadow-lg w-full md:w-96">
+            <h3 className="text-lg font-bold mb-4">
+              {editingIndex !== null ? "Edit User" : "Add New User"}
             </h3>
             <input
               type="text"
@@ -86,7 +97,7 @@ const UserManagement = () => {
                 onClick={addOrUpdateUser}
                 className="bg-[#50a49a] text-white px-4 py-2 rounded mr-2"
               >
-                {editingIndex !== null ? 'Update' : 'Save'}
+                {editingIndex !== null ? "Update" : "Save"}
               </button>
               <button
                 onClick={resetForm}
@@ -99,32 +110,33 @@ const UserManagement = () => {
         </div>
       )}
 
-      <div className="p-4 md:p-8">
-        <div className="flex justify-between border-b border-gray-400 pb-2 mb-4">
-          <h3 className="font-bold w-1/2">User Name</h3>
-          <h3 className="font-bold w-1/2 text-center">Actions</h3>
+      <div>
+        <div className="flex flex-wrap justify-between border-b border-gray-900 pb-2 mb-4 ">
+          <div className="font-bold w-full md:w-2/5">User Name</div>
+          <div className="font-bold w-full md:w-3/5 text-center">Actions</div>
         </div>
         <ul className="list-none p-0">
           {users.map((user, index) => (
             <li
               key={index}
-              className="flex flex-col md:flex-row justify-between items-start md:items-center mb-2 border-b border-gray-400 py-2"
+              className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 py-2 border-b border-gray-300 "
             >
               <div className="flex-1">
-                <p className="font-bold">{user.name}</p>
+                <p className="font-bold truncate">{user.name}</p>
                 <p className="text-sm">{user.jobTitle}</p>
                 <p className="text-sm">{user.email}</p>
               </div>
-              <div className="flex mt-2 md:mt-0">
+
+              <div className="flex w-full md:w-3/5 justify-center mt-2 md:mt-0">
                 <button
                   onClick={() => editUser(index)}
-                  className="bg-[#50a49a] text-white px-4 py-2 rounded mr-2"
+                  className="bg-[#50a49a] text-white px-4 py-2 rounded-lg mr-2 w-full md:w-24"
                 >
                   Edit
                 </button>
                 <button
                   onClick={() => deleteUser(index)}
-                  className="bg-[#ff4694] text-white px-4 py-2 rounded"
+                  className="bg-[#ff4694] text-white px-4 py-2 rounded-lg w-full md:w-24"
                 >
                   Delete
                 </button>
