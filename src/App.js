@@ -8,7 +8,7 @@ const App = () => {
   const [activeComponent, setActiveComponent] = useState('role');
 
   return (
-    <div className="flex">
+    <div className="flex font-sans">
       <Navbar setActiveComponent={setActiveComponent} activeComponent={activeComponent} />
       <div className="w-3/4 h-screen overflow-y-auto">
         

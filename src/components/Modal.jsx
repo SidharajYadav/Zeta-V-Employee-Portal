@@ -143,7 +143,7 @@ const Modal = ({ mode, message, onClose, onAdd, onUpdate }) => {
             </button>
             <button
               type="submit"
-              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#50a49a]"
             >
               {mode === 'create' ? 'Create' : 'Save'}
             </button>

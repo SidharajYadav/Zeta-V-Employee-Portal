@@ -40,6 +40,7 @@ import { GoPerson } from 'react-icons/go';
 import { RiEmotionHappyLine } from 'react-icons/ri';
 import { BsPersonPlus } from 'react-icons/bs';
 import { RxClipboard } from 'react-icons/rx';
+import { FaArrowUpFromBracket } from "react-icons/fa6";
 
 const Navbar = ({ setActiveComponent, activeComponent }) => {
   // Helper function to determine active class
@@ -49,7 +50,8 @@ const Navbar = ({ setActiveComponent, activeComponent }) => {
 
   return (
     <div className="w-full sm:w-1/6 md:w-1/4 lg:w-1/6 h-screen bg-gray-800 text-white p-4 md:p-6 lg:p-8">
-      <h2 className="text-2xl font-bold mb-4 text-center lg:text-left">Employee Management</h2>
+      <h1 className="text-2xl font-bold mb-0 text-center lg:text-left">Zeta-v</h1>
+      <h6 className="text-md font-bold mb-12 text-center lg:text-left">Employee Management</h6>
       <ul className="space-y-2">
         <li
           className={`flex items-center cursor-pointer p-2 rounded ${getActiveClass('role')}`}
@@ -83,7 +85,7 @@ const Navbar = ({ setActiveComponent, activeComponent }) => {
           className={`flex items-center cursor-pointer p-2 rounded ${getActiveClass('notification')}`}
           onClick={() => setActiveComponent('notification')}
         >
-          <FaPaperPlane className="mr-2 text-xl" />
+         <FaArrowUpFromBracket  className="mr-2 text-xl" />
           <span className="hidden sm:inline">Push Notification</span>
         </li>
         <li
