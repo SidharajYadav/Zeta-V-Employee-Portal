@@ -1,5 +1,5 @@
 
-## Zeta-v Technology Solutions-Ltd,Employee Management System
+## Zeta-v Technology Solutions-Ltd, Employee Management System
 
 ### Overview
 
@@ -26,11 +26,11 @@ To get started with the project, follow these steps:
 
 1. **Clone the Repository**
     ```bash
-    git clone https://github.com/yourusername/employee-management-system.git
+    (https://github.com/SidharajYadav/Zeta-V-ass-Portal-.git)
     ```
 2. **Navigate to the Project Directory**
     ```bash
-    cd employee-management-system
+    cd management-system
     ```
 3. **Install Dependencies**
     ```bash

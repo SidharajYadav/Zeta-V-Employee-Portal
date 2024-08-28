@@ -150,3 +150,5 @@ const Modal = ({ mode, message, onClose, onSave }) => {
 };
 
 export default Modal;
+
+
