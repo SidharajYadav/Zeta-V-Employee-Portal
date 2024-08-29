@@ -11,7 +11,7 @@ This project is an **Employee Management System** designed to efficiently manage
 - **Campaign Management**: Manage marketing campaigns with features to add, edit, and delete campaigns.
 - **Tenant Configuration**: Configure and manage tenant information including names, locations, and statuses.
 - **Member Management**: Handle member details with functionalities for adding, updating, and removing members.
-- **Responsive Design**: The application adjusts seamlessly to different screen sizes and devices, providing a consistent user experience.
+- **Responsive Design**: The application adjusts seamlessly to different screen sizes and devices, providing a consistent user experience. 
 
 ### Technologies Used
 
