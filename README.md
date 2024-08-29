@@ -1,5 +1,5 @@
 <a href="" target="_blank">
-      <img src="https://github.com/SidharajYadav/Event-management-platform/blob/main/public/assets/images/Event-Home.jpg" alt="Project Banner">
+      <img src="https://github.com/SidharajYadav/Zeta-V-ass-Portal-/blob/main/public/Screenshot%20(158).png" alt="Project Banner">
     </a>
 ## Zeta-v Technology Solutions-Ltd, Employee Management System
 
